@@ -32,3 +32,9 @@ fs.readFile(path.join(__dirname, "NewText", "Hello.txt"), 'utf8', (err, data)=> 
     if(err) throw err;
     console.log(data)
 })
+
+// rename file 
+fs.rename(path.join(__dirname, "NewText", "Hello.txt"), 'hello.txt', err => {
+    if(err) throw err; 
+    console.log('rename successfuly')
+})
