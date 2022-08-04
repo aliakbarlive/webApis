@@ -4,9 +4,11 @@ const path = require("path");
 
 const PORT = process.env.PORT || 5000;
 const server = http.createServer((req, res) => {
-  if(req.url === '/'){
-    res.end('<h1> Home page </h1>')
+  if (req.url === "/") {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.end("<h1 style='color:blue'> Home Page  </h1>");
   }
+  console.log("req.ulr", req.url);
 });
 
-server.listen(PORT, () => console.log('server is running on port',PORT ));
+server.listen(PORT, () => console.log("server is running on port", PORT));
