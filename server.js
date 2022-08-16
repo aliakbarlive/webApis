@@ -4,13 +4,13 @@ const path = require("path");
 
 const PORT = process.env.PORT || 5000;
 const server = http.createServer((req, res) => {
-  // if (req.url === "/") {
-  //   fs.readFile(path.join(__dirname, "public", "Home.html"), (err, content) => {
-  //     if (err) throw err;
-  //     res.writeHead(200, { "Content-Type": "text/html" });
-  //     res.end(content);
-  //   });
-  // }
+  if (req.url === "/") {
+    fs.readFile(path.join(__dirname, "public", "Home.html"), (err, content) => {
+      if (err) throw err;
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.end(content);
+    });
+  }
 
   // if (req.url === "/api/user") {
   //   const users = [
