@@ -1,6 +1,9 @@
-const http = require("http");
-const fs = require("fs");
-const path = require("path");
+const express = require("express");
+const app = express();
+const PORT = 5000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 const PORT = process.env.PORT || 5000;
 const server = http.createServer((req, res) => {
@@ -12,67 +15,51 @@ const server = http.createServer((req, res) => {
     });
   }
 
-  // if (req.url === "/api/user") {
-  //   const users = [
-  //     {
-  //       id: "1",
-  //       name: "ali",
-  //     },
-  //     {
-  //       id: "1",
-  //       name: "ali",
-  //     },
-  //   ];
-  //   res.writeHead(200,{'Content-Typpe':'application/json'})
-  //   res.end(JSON.stringify(users))
-  // }
+app.use(express.static('public'))
 
-  // build fil path
-  const filePath = path.join(
-    __dirname,
-    "public",
-    req.url === "/" ? "Home.html" : req.url
-  );
+// app.get("/", (req, res) => {
+//   // res.send("<h1>This is home page</h1>");
+//   // res.json({mesg: 'This is json'})
 
-  //  get the file extension
-  const extName = path.extname(filePath);
+//   // to get client header info
+//   const head = req.header("host");
+//   const userAgent = req.header("user-agent");
+//   // to get all header in arr
+//   const rawHeader = req.rawHeaders;
+//   res.send(rawHeader);
+// });
 
-  // initial content-type
-  let contentType = "text/html";
-
-  switch (extName) {
-    case ".js":
-      contentType = "application/js";
-    case ".json":
-      contentType = "application/json";
-    case '.png':
-      contentType= 'image/png'
-    case ".css":
-      contentType = "text/css";
-      break;
+app.post("/contact", (req, res) => {
+  if (!req.body.name) {
+    return res.status(400).send("Name is required");
   }
-  // Read file
-  fs.readFile(path.join(filePath), (err, content) => {
-    if (err) {
-      if (err.code === "ENOENT") {
-        // Page not found
-        fs.readFile(
-          path.join(__dirname, "public", "404.html"),
-          (err, content) => {
-            res.writeHead(200, { "Content-Type": contentType });
-            res.end(content, "utf8");
-          }
-        );
-      } else {
-        // some server error
-        res.writeHead(500);
-        res.end(`server error ${err.code}`);
-      }
-    } else {
-      res.writeHead(200, { "Content-Type": contentType });
-      res.end(content, "utf8");
-    }
-  });
+  res.status(201).send(`Thank you ${req.body.name}`);
 });
 
-server.listen(PORT, () => console.log("server is running on port", PORT));
+// login auth using x-auth-token header
+app.post("/login", (req, res) => {
+  if (!req.header("x-auth-token")) {
+    return res.status(400).send("NO Token");
+  }
+  if (req.header("x-auth-token") !== "12345") {
+    return res.status(401).send("Not Authorize");
+  }
+  res.send("Logged In");
+});
+
+// to update the data
+app.put('/post/:id', (req, res) =>{
+  res.json({
+    id: req.params.id,
+    title: req.body.title
+  })
+})
+
+// to delete the data 
+app.delete('/post/:id', (req, res) =>{
+  res.json({
+    mesg: `The id ${req.params.id} is deleted `
+  })
+})
+
+app.listen(PORT, () => console.log(`server is running on ${PORT}`));
