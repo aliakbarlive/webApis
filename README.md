@@ -1,4 +1,5 @@
 # RestApis
-npm install 
+1. npm install 
 # To run the server use 
-node server
+2. npm run dev
+
