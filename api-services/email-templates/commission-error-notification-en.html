@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Commission Error Notification</title>
+  </head>
+  <body style="background: #fafafa">
+    <table
+      cellspacing="0"
+      cellpadding="0"
+      bgcolor="#ffffff"
+      align="center"
+      style="background-color: #ffffff; width: 1200px"
+    >
+      <tr>
+        <td>
+          <h3>
+            There are {{notification_count}} invoices with commissions that were
+            not processed today, {{notification_date}}
+          </h3>
+        </td>
+      </tr>
+    </table>
+    <table
+      cellspacing="0"
+      cellpadding="0"
+      bgcolor="#ffffff"
+      align="center"
+      style="background-color: #ffffff; width: 1200px"
+    >
+      <thead>
+        <tr>
+          <th align="left">Client</th>
+          <th align="left">Invoice #</th>
+          <th align="left">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{data}}
+      </tbody>
+    </table>
+  </body>
+</html>

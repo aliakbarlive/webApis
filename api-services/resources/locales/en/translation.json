@@ -1,0 +1,5 @@
+{
+  "client.subscription": "{{client}} has subscribed to BetterSeller",
+  "client.subscription.failed": "{{client}} was unable to subscribe to BetterSeller",
+  "termination.filed": "New Termination Request filed for {{client}}"
+}
