@@ -1,0 +1,23 @@
+FROM node:lts-alpine
+
+ENV NODE_ENV test
+
+ENV CHROME_BIN="/usr/bin/chromium-browser" \
+    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD="true"
+
+RUN set -x \
+    && apk update \
+    && apk upgrade \
+    && apk add --no-cache \
+    udev \
+    ttf-freefont \
+    chromium
+
+WORKDIR /app
+COPY package.json .
+RUN npm install
+COPY . .
+
+EXPOSE 5000
+
+CMD ["npm", "run", "start"]
