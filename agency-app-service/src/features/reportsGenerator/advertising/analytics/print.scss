@@ -1,0 +1,19 @@
+@media print {
+  .advertising-analytics {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  // @page {
+  //   size: A4;
+  //   margin: 0;
+  // }
+
+  .pagebreak {
+    page-break-before: always;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+  }
+}
