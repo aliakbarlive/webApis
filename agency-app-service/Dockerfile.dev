@@ -1,0 +1,11 @@
+FROM node:14-alpine
+
+ENV NODE_ENV development
+ENV REACT_APP_PLAN_CODE SVC-001
+
+WORKDIR /app
+COPY package.json .
+RUN npm install 
+COPY . .
+
+CMD ["npm", "run", "start"]
