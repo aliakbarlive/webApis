@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.selection-cell {
+  @apply text-center;
+}
+
+.selection-cell-header {
+  @apply px-6 py-3;
+}
+
+.Selectable
+  .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  @apply bg-red-50;
+  @apply text-red-600;
+}
+.Selectable .DayPicker-Day {
+  border-radius: 0 !important;
+}
+.Selectable .DayPicker-Day--start:not(.DayPicker-Day--outside) {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+  @apply bg-red-500 !important;
+}
+.Selectable .DayPicker-Day--end:not(.DayPicker-Day--outside) {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+  @apply bg-red-500 !important;
+}
+
+.styles_react-code-input__CRulA > input:focus {
+  outline: none !important;
+  border: 1px solid #dc2626 !important;
+  caret-color: #dc2626 !important;
+  box-shadow: none !important;
+}
