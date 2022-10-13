@@ -3,7 +3,7 @@
 - [Setup](https://gitlab.com/noni-brands/better-seller/-/edit/develop/README.md#setup)
 - [Mailtrap](https://gitlab.com/noni-brands/better-seller/-/edit/develop/README.md#mailtrap)
 
-## Here Technology Stack 
+## Technology Stack 
 
 - [React](https://reactjs.org/)
 - [Bootstrap](https://getbootstrap.com/docs/4.5/getting-started/introduction/)
