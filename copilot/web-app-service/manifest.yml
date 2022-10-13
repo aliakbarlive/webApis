@@ -1,0 +1,34 @@
+name: web-app-service
+type: Load Balanced Web Service
+
+http:
+  path: '/'
+
+image:
+  port: 80
+
+cpu: 512
+memory: 1024
+count: 1
+exec: true
+
+environments:
+  test:
+    http:
+      alias: 'app.test.better-seller.betterseller.com'
+    image:
+      build: web-app-service/Dockerfile.test
+    variables:
+      NODE_ENV: test
+      REACT_APP_API_BASE_URL: https://api.test.better-seller.betterseller.com/v1
+      REACT_APP_SP_API_REDIRECT_URL: https://app.test.better-seller.betterseller.com/onboarding
+
+  production:
+    http:
+      alias: 'app.betterseller.com'
+    image:
+      build: web-app-service/Dockerfile.prod
+    variables:
+      NODE_ENV: production
+      REACT_APP_API_BASE_URL: https://api.betterseller.com/v1
+      REACT_APP_SP_API_REDIRECT_URL: https://app.betterseller.com/onboarding
