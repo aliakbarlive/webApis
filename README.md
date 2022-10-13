@@ -50,7 +50,7 @@ A migration needs to take place in order to create the necessary database tables
 
 If you want to learn more about how migrations work with Sequelize CLI, you can give this part of the [Sequelize documentation](https://sequelize.org/master/manual/migrations.html) a read.
 
-To run the migrations, you would need to enter the backend/api container:
+To run the migrations, you would need to enter the backend/api container :
 
 ```
 docker exec -it better-seller_api_1 sh
