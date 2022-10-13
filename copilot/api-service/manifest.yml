@@ -1,0 +1,103 @@
+name: api-service
+type: Load Balanced Web Service
+
+http:
+  path: '/'
+  healthcheck: '/health-check'
+
+image:
+  port: 5000
+
+cpu: 2048
+memory: 4096
+count: 1
+exec: true
+
+environments:
+  test:
+    image:
+      build: api-service/Dockerfile.test
+    http:
+      alias: 'api.test.better-seller.betterseller.com'
+    variables:
+      NODE_ENV: test
+      DATABASE_NAME: postgres
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: IE6e4aDN6twLgfTrWSYK
+      DATABASE_HOST: better-seller-test-database.cqfhkhnzemlb.us-east-1.rds.amazonaws.com
+      REDIS_HOST: better-seller-redis-test.4oi2rv.0001.use1.cache.amazonaws.com
+      REDIS_PORT: 6379
+      RAINFOREST_TUNNEL_URL: https://api.test.better-seller.betterseller.com
+      RAINFOREST_NOTIFICATION_EMAIL: dev@nonibrands.com
+      BASE_URL: 'api.test.better-seller.betterseller.com'
+      ZOHO_AUTO_EMAIL_DAYS: 120
+      ZOHO_AUTO_COLLECT_DAYS: 120
+      ZOHO_AUTO_COMMISSION_DAYS: 120
+      RUN_CRON_AUTO_INVOICING_SCHEDULE: yes
+      ZOHO_PAYMENT_TERMS: 5
+      ZOHO_PAYMENT_TERMS_LABEL: 'Net 5'
+      ZOHO_COMMISSION_US_CODE: ongoing-sales-commission-ca
+      ZOHO_COMMISSION_CA_CODE: ongoing-sales-commission
+      SI_URL: https://dev.sellerinteractive.com
+      SITE_URL: https://agency.test.better-seller.betterseller.com
+      AGENCY_URL: https://agency.test.better-seller.betterseller.com
+      DOMAIN: .betterseller.com
+      ACCOUNT_INVITE_TEMPLATE: test-account-invite-{language}
+      REVIEW_INVOICE_TEMPLATE: test-review-invoice-en
+      REVIEW_INVOICE_OFFLINE_TEMPLATE: review-invoice-offline-en
+      COMMISSION_ERROR_NOTIFICATION_TEMPLATE: commission-error-notification-en
+      SP_API_REDIRECT_URL: https://agency.test.better-seller.betterseller.com/onboarding
+      ZOHO_NO_TAX_ID: 2599570000000626045
+      ADMIN_USER_ID: c8dd2253-9bd6-43c6-86e8-c006435c1b3b
+      RUN_SYNC_INVOICE_SCHEDULE: yes
+  production:
+    image:
+      build: api-service/Dockerfile.prod
+    http:
+      alias: 'api.betterseller.com'
+    count:
+      range: 2-10
+      cpu_percentage: 70
+      memory_percentage: 80
+    variables:
+      NODE_ENV: production
+      DATABASE_NAME: postgres
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: O8V2YjucoOM9EylTUNCiiK
+      DATABASE_HOST: better-seller-production-database-2.cqfhkhnzemlb.us-east-1.rds.amazonaws.com
+      REDIS_PORT: 6379
+      REDIS_HOST: better-seller-redis-production.4oi2rv.0001.use1.cache.amazonaws.com
+      RAINFOREST_TUNNEL_URL: https://api.betterseller.com
+      RAINFOREST_NOTIFICATION_EMAIL: dev@nonibrands.com
+      BASE_URL: 'api.betterseller.com'
+      ZOHO_ORGANIZATION_ID: 677181847
+      ZOHO_PRODUCT_ID: 1604151000002547003
+      ZOHO_WEBHOOK_KEY: daed02b8f2c4c1a39a7f5f550d3bf818
+      ZOHO_AUTO_EMAIL_DAYS: 1
+      ZOHO_AUTO_COLLECT_DAYS: 1
+      ZOHO_AUTO_COMMISSION_DAYS: 0
+      RUN_CRON_AUTO_INVOICING_SCHEDULE: yes
+      ZOHO_PAYMENT_TERMS: 5
+      ZOHO_PAYMENT_TERMS_LABEL: 'Net 5'
+      ZOHO_COMMISSION_US_CODE: ongoing-sales-commission-ca
+      ZOHO_COMMISSION_CA_CODE: ongoing-sales-commission
+      ZOHO_NO_TAX_ID: 1604151000000075017
+      SI_WEBHOOK_KEY: e97353ac8b2a4a57b9e757c02f7f9544
+      SI_URL: https://account.sellerinteractive.com
+      SITE_URL: https://agency.betterseller.com
+      NOTIFICATIONS_EMAIL: notifications@betterseller.com
+      KEN_CC: ken@sellerinteractive.com
+      SALES_ADMIN_CC: yasmin.cuna@sellerinteractive.com
+      ZOHO_ADMIN_EMAIL: zohosubscriptions@sellerinteractive.net
+      INVOICE_EMAIL: invoice@sellerinteractive.com
+      DEV_CC: joshua@outgive.ca
+      AGENCY_URL: https://agency.betterseller.com
+      DOMAIN: .betterseller.com
+      ACCOUNT_INVITE_TEMPLATE: account-invite-{language}
+      REVIEW_INVOICE_TEMPLATE: review-invoice-en
+      REVIEW_INVOICE_OFFLINE_TEMPLATE: review-invoice-offline-en
+      COMMISSION_ERROR_NOTIFICATION_TEMPLATE: commission-error-notification-en
+      AWS_BUCKET: betterseller-prod
+      SP_API_REDIRECT_URL: https://agency.betterseller.com/onboarding
+      ADMIN_USER_ID: c8dd2253-9bd6-43c6-86e8-c006435c1b3b
+      RUN_SYNC_INVOICE_SCHEDULE: yes
