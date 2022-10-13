@@ -1,0 +1,41 @@
+name: agency-app-service
+type: Load Balanced Web Service
+
+http:
+  path: '/'
+
+image:
+  port: 80
+
+cpu: 512
+memory: 1024
+count: 1
+exec: true
+
+environments:
+  test:
+    http:
+      alias: 'agency.test.better-seller.betterseller.com'
+    image:
+      build: agency-app-service/Dockerfile.test
+    variables:
+      REACT_APP_NODE_ENV: test
+      REACT_APP_VERSION: 1.7.8
+      REACT_APP_SP_API_REDIRECT_URL: https://agency.test.better-seller.betterseller.com/callback/amazon
+      REACT_APP_ADV_API_REDIRECT_URL: https://agency.test.better-seller.betterseller.com/callback/amazon
+      REACT_APP_CLIENT_SP_API_REDIRECT_URL: https://agency.test.better-seller.betterseller.com/onboarding
+      REACT_APP_CLIENT_ADV_API_REDIRECT_URL: https://agency.test.better-seller.betterseller.com/onboarding
+      REACT_APP_SERVER_URL: https://api.test.better-seller.betterseller.com
+  production:
+    http:
+      alias: 'agency.betterseller.com'
+    image:
+      build: agency-app-service/Dockerfile.prod
+    variables:
+      REACT_APP_NODE_ENV: production
+      REACT_APP_VERSION: 1.7.8
+      REACT_APP_SP_API_REDIRECT_URL: https://agency.betterseller.com/callback/amazon
+      REACT_APP_ADV_API_REDIRECT_URL: https://agency.betterseller.com/callback/amazon
+      REACT_APP_CLIENT_SP_API_REDIRECT_URL: https://agency.betterseller.com/onboarding
+      REACT_APP_CLIENT_ADV_API_REDIRECT_URL: https://agency.betterseller.com/onboarding
+      REACT_APP_SERVER_URL: https://api.betterseller.com

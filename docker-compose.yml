@@ -1,0 +1,85 @@
+version: '3'
+services:
+  postgres:
+    image: 'postgres:latest'
+    shm_size: 1g
+    environment:
+      - POSTGRES_PASSWORD=postgres_password
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'betterseller-db:/var/lib/postgresql/data'
+  agency-app-service:
+    stdin_open: true
+    build:
+      context: ./agency-app-service
+      dockerfile: Dockerfile.dev
+    environment:
+      CHOKIDAR_USEPOLLING: 'true'
+    ports:
+      - '3002:3002'
+    volumes:
+      - /app/node_modules
+      - './agency-app-service:/app'
+    restart: on-failure
+  api-service:
+    build:
+      context: ./api-service
+      dockerfile: Dockerfile.dev
+    ports:
+      - '5000:5000'
+    restart: always
+    volumes:
+      - /app/node_modules
+      - './api-service:/app'
+    depends_on:
+      - redis
+      - postgres
+    environment:
+      - MODE=api
+      - PORT=5000
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      - BASE_URL=
+  queue-service:
+    build:
+      context: ./api-service
+      dockerfile: Dockerfile.dev
+    ports:
+      - '5001:5001'
+    restart: always
+    volumes:
+      - /app/node_modules
+      - './api-service:/app'
+    depends_on:
+      - redis
+      - postgres
+    environment:
+      - MODE=queue
+      - PORT=5001
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      - BASE_URL=
+  nginx-service:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx-service
+    ports:
+      - '80:80'
+    depends_on:
+      - agency-app-service
+      - api-service
+      - queue-service
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+volumes:
+  betterseller-db: null
