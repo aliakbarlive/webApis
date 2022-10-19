@@ -1,0 +1,99 @@
+.loading-overlay {
+  transition: opacity 0.6s ease;
+  opacity: 0.5;
+  pointer-events: none;
+}
+pre.profile-form-text {
+  white-space: pre-wrap;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+}
+.profile-form-label {
+  color: $gray-600;
+}
+
+.activity {
+  padding: 0 1.5rem 1.5rem;
+  border-left: 1px solid $primary;
+  position: relative;
+
+  &::before {
+    content: '●';
+    position: absolute;
+    left: -4.3px;
+    z-index: 10;
+    color: $primary;
+    line-height: 1;
+    top: 0;
+  }
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    left: -7px;
+    top: 0;
+    height: 14px;
+    width: 14px;
+    background: $white;
+    border: solid 1px $primary;
+    border-radius: 50%;
+  }
+
+  p {
+    margin-bottom: 5px;
+    color: $black;
+  }
+}
+
+.invoice-layout {
+  max-width: 820px;
+}
+
+.ribbon {
+  height: 119px;
+  overflow: hidden;
+  position: absolute;
+  top: -6px;
+  left: -5px;
+  font-size: 14px;
+}
+
+.ribbon-inner {
+  text-align: center;
+  color: #fff;
+  top: 29px;
+  left: -35px;
+  width: 150px;
+  padding: 4px 4px 4px 8px;
+  position: relative;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  text-transform: capitalize;
+
+  &::after,
+  &::before {
+    content: '';
+    border-top: 5px solid transparent;
+    border-left: 5px solid;
+    border-left-color: inherit;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid;
+    border-bottom-color: inherit;
+    position: absolute;
+    top: 23px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  &::before {
+    left: 0;
+    border-left: 4px solid transparent;
+  }
+
+  &::after {
+    right: -4px;
+    border-bottom: 5px solid transparent;
+  }
+}
