@@ -1,0 +1,12 @@
+footer.footer {
+  background-color: rgba(237, 242, 249, 0.96);
+  padding: $spacer $spacer * 0.75;
+
+  ul {
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    width: 100vw;
+  }
+}

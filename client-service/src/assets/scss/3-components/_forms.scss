@@ -1,0 +1,25 @@
+.form-control-no-border {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+
+  &:focus {
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+.currency-add-on {
+  padding: 0.25rem 0.4rem;
+}
+
+input.no-arrow::-webkit-outer-spin-button,
+input.no-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input.no-arrow[type='number'] {
+  -moz-appearance: textfield;
+}

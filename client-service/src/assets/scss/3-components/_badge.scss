@@ -1,0 +1,21 @@
+.badge {
+  color: $white;
+  font-size: 0.83333rem;
+  border-radius: 3.125rem !important;
+  padding: 0.35556em 0.71111em;
+}
+
+.badge-soft-success {
+  color: #00864e;
+  background-color: #ccf6e4;
+}
+
+.badge-soft-warning {
+  color: #c46632;
+  background-color: #fde6d8;
+}
+
+.badge-soft-secondary {
+  color: #7d899b;
+  background-color: #e3e6ea;
+}
