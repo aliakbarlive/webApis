@@ -1,0 +1,102 @@
+[
+  {
+    "key": "unitSoldAmount",
+    "color": "#d12d74",
+    "suffix": ""
+  },
+  {
+    "key": "orderAmount",
+    "color": "#edacc8",
+    "suffix": ""
+  },
+  {
+    "key": "netProfitAmount",
+    "color": "#6c173c",
+    "suffix": "($)"
+  },
+  {
+    "key": "netRevenueAmount",
+    "color": "#6c8ca0",
+    "suffix": "($)"
+  },
+  {
+    "key": "promotionAmount",
+    "color": "#d1abc4",
+    "suffix": "($)"
+  },
+  {
+    "key": "profitMarginAmount",
+    "color": "#703c48",
+    "suffix": "(%)"
+  },
+  {
+    "key": "refundAmount",
+    "color": "#eac42a",
+    "suffix": "($)"
+  },
+  {
+    "key": "costsAmount",
+    "color": "#779753",
+    "suffix": "($)"
+  },
+  {
+    "key": "cogsAmount",
+    "color": "#b9d4fa",
+    "suffix": "($)"
+  },
+  {
+    "key": "ppcAmount",
+    "color": "#7b5f14",
+    "suffix": "($)"
+  },
+  {
+    "key": "prevUnitSoldAmount",
+    "color": "#D3D3D3",
+    "suffix": ""
+  },
+  {
+    "key": "prevOrderAmount",
+    "color": "#D3D3D3",
+    "suffix": ""
+  },
+  {
+    "key": "prevNetProfitAmount",
+    "color": "#D3D3D3",
+    "suffix": "($)"
+  },
+  {
+    "key": "prevNetRevenueAmount",
+    "color": "#D3D3D3",
+    "suffix": "($)"
+  },
+  {
+    "key": "prevPromotionAmount",
+    "color": "#D3D3D3",
+    "suffix": "($)"
+  },
+  {
+    "key": "prevProfitMarginAmount",
+    "color": "#D3D3D3",
+    "suffix": "(%)"
+  },
+  {
+    "key": "prevRefundAmount",
+    "color": "#D3D3D3",
+    "suffix": "($)"
+  },
+  {
+    "key": "prevCostsAmount",
+    "color": "#D3D3D3",
+    "suffix": "($)"
+  },
+  {
+    "key": "prevCogsAmount",
+    "color": "#D3D3D3",
+    "suffix": "($)"
+  },
+  {
+    "key": "prevPpcAmount",
+    "color": "#D3D3D3",
+    "suffix": "($)"
+  }
+]

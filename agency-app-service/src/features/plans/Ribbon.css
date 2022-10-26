@@ -1,0 +1,48 @@
+.ribbon {
+  height: 119px;
+  overflow: hidden;
+  position: absolute;
+  top: -6px;
+  left: -5px;
+  font-size: 14px;
+}
+
+.ribbon-inner {
+  text-align: center;
+  color: #fff;
+  top: 29px;
+  left: -35px;
+  width: 150px;
+  padding: 4px 4px 4px 8px;
+  position: relative;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  text-transform: capitalize;
+}
+
+.ribbon-inner::after,
+.ribbon-inner::before {
+  content: '';
+  border-top: 5px solid transparent;
+  border-left: 5px solid;
+  border-left-color: inherit;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid;
+  border-bottom-color: inherit;
+  position: absolute;
+  top: 23px;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.ribbon-inner::before {
+  left: 0;
+  border-left: 4px solid transparent;
+}
+
+.ribbon-inner::after {
+  right: -4px;
+  border-bottom: 5px solid transparent;
+}
