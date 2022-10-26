@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fonts/SourceSansPro-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('./fonts/SourceSansPro-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    font-family: Inter, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-1xs {
+    font-size: 11px;
+  }
+  .text-2xs {
+    font-size: 10px;
+  }
+}
+
+/* Applied on the checkbox for the table */
+.selection-cell {
+  @apply text-center;
+}
+
+.caret {
+  @apply bg-gray-900;
+}
+
+input[type='number']#price::-webkit-inner-spin-button,
+input[type='number']#price::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.szh-menu-container {
+  width: 100% !important;
+}
+
+fieldset[disabled] input[type='checkbox'],
+fieldset[disabled] input[type='radio'],
+input[type='checkbox'].disabled,
+input[type='checkbox'][disabled],
+input[type='radio'].disabled,
+input[type='radio'][disabled],
+button[disabled] {
+  cursor: not-allowed;
+}
+
+.form-select {
+  @apply block w-full pl-3 pr-10 py-2 border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 rounded-md disabled:bg-gray-100;
+}
+.form-input {
+  @apply shadow-sm focus:ring-red-500 focus:border-red-500 block w-full border-gray-300 rounded-md;
+}
+.btn-red {
+  @apply inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600  hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 mt-2 mr-2;
+}
+.btn-green {
+  @apply inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600  hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-2 mr-2;
+}
+
+.org-tree-container {
+  background: transparent !important;
+}
+.org-tree-node-label .org-employees.org-tree-node-label-inner {
+  padding: 5px;
+}
+.org-tree-node-label .org-tree-node-label-inner {
+  border-radius: 6px;
+}
+
+.menu-popup-div {
+  height: 95vh;
+  top: 64px;
+}
+
+.menu-popup-div.menu {
+  top: 48px;
+}
+
+.bell-div .arrow-top {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom-width: 15px;
+  border-bottom-color: #d1fae5;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.bell-notif.opened .bell-div .arrow-top {
+  opacity: 1;
+}
+.h-87vh {
+  height: 87vh;
+}
